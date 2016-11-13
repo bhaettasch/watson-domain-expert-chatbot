@@ -1,0 +1,21 @@
+# list files and folders here which should not be set under version control
+lib/
+chat_ids.txt
+
+# compiled python byte code
+*.pyc
+__pycache__/
+
+# virtualenv
+venv/
+
+# local settings file for overwriting default development settings
+settings_local.py
+
+# JetBrains IDE
+.idea/
+
+# pyDev IDE
+.project
+.pydevproject
+
