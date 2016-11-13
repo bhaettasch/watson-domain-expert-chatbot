@@ -1,0 +1,22 @@
+{% extends "bwb_webapp/base.html" %}{% load bootstrap3 %}
+{% block title %}New chat {% endblock %}
+
+{% block content %}
+<h1>Start new chat</h1>
+
+<div id="mainForm">
+    <form role="form" action="{{action}}" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+    {% buttons %}
+        <button type="reset" class="btn btn-danger">
+            {% bootstrap_icon "remove" %} Reset
+        </button>
+        <button type="submit" class="btn btn-success pull-right">
+            {% bootstrap_icon "ok" %} Create
+        </button>
+    {% endbuttons %}
+    </form>
+</div>
+{% endblock %}
+

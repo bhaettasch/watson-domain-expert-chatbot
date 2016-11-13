@@ -1,0 +1,10 @@
+{
+  "name": "bwb",
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "bootstrap-chosen": "master",
+    "chosen": "~1.5.1",
+    "font-awesome": "~4.5.0",
+    "jquery": "~2.2.1"
+  }
+}

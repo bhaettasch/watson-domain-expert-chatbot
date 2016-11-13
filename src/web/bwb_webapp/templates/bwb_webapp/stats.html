@@ -1,0 +1,150 @@
+{% extends "bwb_webapp/base.html" %}
+
+{% block title %}Statistics{% endblock %}
+
+{% block content %}
+
+    <h1>Statistics</h1>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', {'packages':['corechart', 'scatter', 'bar']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart () {
+
+            var data_conf_vs_correct = new google.visualization.DataTable();
+            data_conf_vs_correct.addColumn('number', 'Confidence (%)');
+            data_conf_vs_correct.addColumn('number', 'Correctness (%)');
+            data_conf_vs_correct.addRows({{ conf_vs_correct }});
+
+            var options_conf_vs_correct = {
+              width: 550,
+              height: 500,
+              chart: {
+                title: 'Confidence vs. Correctness'
+              },
+              hAxis: {title: 'Confidence (%)'},
+              vAxis: {title: 'Correctness (%)'},
+              legend: {position: 'none'}
+            };
+
+            var chart_conf_vs_correct = new google.charts.Scatter(document.getElementById('chart_conf_vs_correct'));
+            chart_conf_vs_correct.draw(data_conf_vs_correct, google.charts.Scatter.convertOptions(options_conf_vs_correct));
+
+            var data_conf_vs_helpful = new google.visualization.DataTable();
+            data_conf_vs_helpful.addColumn('number', 'Confidence (%)');
+            data_conf_vs_helpful.addColumn('number', 'Helpfulness (%)');
+            data_conf_vs_helpful.addRows({{ conf_vs_helpful }});
+
+            var options_conf_vs_helpful = {
+              width: 550,
+              height: 500,
+              chart: {
+                title: 'Confidence vs. Helpfulness'
+              },
+              hAxis: {title: 'Confidence (%)'},
+              vAxis: {title: 'Correctness (%)'},
+              legend: {position: 'none'}
+            };
+
+            var chart_conf_vs_helpful = new google.charts.Scatter(document.getElementById('chart_conf_vs_helpful'));
+            chart_conf_vs_helpful.draw(data_conf_vs_helpful, google.charts.Scatter.convertOptions(options_conf_vs_helpful));
+
+
+            var data_confidence_steps = new google.visualization.DataTable();
+            data_confidence_steps.addColumn('string', 'Confidence (%)');
+            data_confidence_steps.addColumn('number', 'Count');
+            data_confidence_steps.addRows({{ confidence_steps | safe }});
+
+            var options_confidence_steps = {
+                  title: 'Confidence',
+                  legend: 'none',
+                  hAxis: {title: 'Confidence (%)'},
+                  vAxis: {title: 'Count'}
+                };
+
+            var chart_confidence_steps = new google.visualization.SteppedAreaChart(document.getElementById('chart_confidence_steps'));
+            chart_confidence_steps.draw(data_confidence_steps, options_confidence_steps);
+
+
+            var data_histogram_bins_correct = new google.visualization.DataTable();
+            data_histogram_bins_correct.addColumn('string', 'Confidence (%)');
+            data_histogram_bins_correct.addColumn('number', 'Count');
+            data_histogram_bins_correct.addColumn('number', 'Voted as correct');
+            data_histogram_bins_correct.addColumn('number', 'Voted as incorrect');
+            data_histogram_bins_correct.addRows({{ histogram_bins_correct | safe }});
+
+            var options_histogram_bins_correct = {
+              chart: {
+                title: 'Confidence vs. Correctness',
+                legend: { position: 'top', maxLines: 3 },
+              }
+            };
+
+            var chart_histogram_bins_correct = new google.charts.Bar(document.getElementById('chart_histogram_bins_correct'));
+            chart_histogram_bins_correct.draw(data_histogram_bins_correct, google.charts.Bar.convertOptions(options_histogram_bins_correct));
+
+            var data_histogram_bins_helpful = new google.visualization.DataTable();
+            data_histogram_bins_helpful.addColumn('string', 'Confidence (%)');
+            data_histogram_bins_helpful.addColumn('number', 'Count');
+            data_histogram_bins_helpful.addColumn('number', 'Voted as helpful');
+            data_histogram_bins_helpful.addColumn('number', 'Voted as not helpful');
+            data_histogram_bins_helpful.addRows({{ histogram_bins_helpful | safe }});
+
+            var options_histogram_bins_helpful = {
+              chart: {
+                title: 'Confidence vs. Helpfulness',
+                legend: { position: 'top', maxLines: 3 },
+              }
+            };
+
+            var chart_histogram_bins_helpful = new google.charts.Bar(document.getElementById('chart_histogram_bins_helpful'));
+            chart_histogram_bins_helpful.draw(data_histogram_bins_helpful, google.charts.Bar.convertOptions(options_histogram_bins_helpful));
+        }
+    </script>
+
+    <div id="chart_confidence_steps" style="width: 1200px; height: 500px;"></div>
+
+    <div>
+        <div class="stats-box">
+            Messages:
+            <h2>{{ message_count }}</h2>
+        </div>
+
+        <div class="stats-box">
+            Answers:
+            <h2>{{ answer_count }}</h2>
+        </div>
+
+        <div class="stats-box">
+            Votes:
+            <h2>{{ vote_count }}</h2>
+        </div>
+
+        <div class="stats-box">
+            Users:
+            <h2>{{ user_count }}</h2>
+        </div>
+    </div>
+
+    <div class="row" style="clear: both;">
+        <div class="col-lg-6">
+            <div id="chart_conf_vs_correct" style="width: 550px; height: 500px;"></div>
+        </div>
+        <div class="col-lg-6">
+            <div id="chart_histogram_bins_correct" style="width: 550px; height: 500px;"></div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:80px;">
+        <div class="col-lg-6">
+            <div id="chart_conf_vs_helpful" style="width: 550px; height: 500px;"></div>
+        </div>
+        <div class="col-lg-6">
+            <div id="chart_histogram_bins_helpful" style="width: 550px; height: 500px;"></div>
+        </div>
+    </div>
+
+{% endblock %}

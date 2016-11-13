@@ -1,0 +1,83 @@
+.cell {
+    color: #ffffff!important;
+    text-align:center;
+    padding:30px 5px 30px 5px;
+    cursor: pointer;
+    border: 5px solid #ffffff;
+}
+
+.cell:hover {
+    text-decoration: none;
+    border: 5px solid #ffffff;
+}
+
+/* Break when a row is full */
+.col-xs-6:nth-child(2n+3) {
+    clear:left;
+}
+@media (min-width:767px)
+{
+    .col-xs-6:nth-child(2n+3) {
+        clear:none;
+    }
+    .col-sm-4:nth-child(4n+4) {
+        clear:left;
+    }
+}
+
+.message {
+
+}
+
+.vote, .play {
+    cursor: pointer;
+}
+
+.message-watson {
+    color: #2780e3;
+}
+
+.message-content {
+    margin-bottom:0;
+}
+
+.message-timestamp {
+    float: right;
+    color: #aaaaaa;
+}
+
+.message-votebox {
+    color: #999999;
+    font-size:0.9em;
+}
+
+.navbar-custom-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar-custom-link:hover {
+    color: #dddddd;
+    text-decoration: none;
+    border-bottom: 1px dashed #dddddd;
+}
+
+.notSelectable {
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+.stats-box {
+    float: left;
+    width: 200px;
+    height: 140px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.img-thumbnail {
+    cursor: pointer;
+}

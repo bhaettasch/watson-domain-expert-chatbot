@@ -1,0 +1,29 @@
+{% extends "bwb_webapp/base.html" %}
+
+{% block title %}Chats{% endblock %}
+
+{% block content %}
+
+    <a href="{% url "app:questionnaire" %}" class="btn btn-danger pull-right"><b>Evaluate me!</b></a>
+
+    <h1>Chats</h1>
+
+    <p style="margin:30px;font-size: 1.3em;">
+        Join a current chat or start a new one.
+    </p>
+
+    <div class="row">
+        {% for chat in chats %}
+            <a href="{% url "app:chat" chat.pk %}" class="col-md-2 col-xs-4 bg-primary cell">
+                <i class="fa fa-comments-o fa-2x"></i><br>
+                {{ chat.name | striptags }}
+            </a>
+    {% endfor %}
+        <a href="{% url "app:chat_new" %}" class="col-md-2 col-xs-4 bg-warning cell">
+            <i class="fa fa-comment-o fa-2x"></i><br>
+            New chat
+        </a>
+    </div>
+
+
+{% endblock %}

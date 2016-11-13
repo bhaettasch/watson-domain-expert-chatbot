@@ -1,0 +1,146 @@
+{% extends "bwb_webapp/base.html" %}{% load staticfiles %}
+
+{% block title %}Watson Marvel Expert{% endblock %}
+
+{% block content %}
+    <style>
+        .bubble {
+            position: relative;
+            padding: 20px;
+            border: #000000 solid 2px;
+            text-align: center;
+            font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+            font-weight:300;
+            font-size:1.2em;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bubble:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 22px 0 22px 23px;
+            border-color: transparent #FFFFFF;
+            display: block;
+            width: 0;
+            z-index: 1;
+            right: -23px;
+            top: 65px;
+        }
+
+        .bubble:before {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 23px 0 23px 24px;
+            border-color: transparent #000000;
+            display: block;
+            width: 0;
+            z-index: 0;
+            right: -26px;
+            top: 64px;
+        }
+
+        #questionArea {
+            border: 2px solid #333333;
+            font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+            font-weight:300;
+            font-size:1em;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom:20px;
+            padding:10px;
+        }
+
+        #answerArea {
+            width: 100%;
+            height: 300px;
+        }
+
+        #watsonExpertPlaceholder {
+            margin-top: 190px;
+            float: right;
+            width: 150px;
+        }
+
+        #voteArea {
+            text-align: center;
+            font-size:1.2em;
+            margin-top:20px;
+            visibility: hidden;
+        }
+
+        .footer {
+            margin-top:40px!important;
+        }
+    </style>
+
+    <h2 class="notSelectable" style="margin-bottom: 30px;text-align: center;">Meet Watson, your personal Marvel Cinematic Universe Expert</h2>
+
+    <img src="{% static 'bwb_webapp/img/movie_expert.png' %}" class="notSelectable" id="watsonExpertPlaceholder">
+    <div style="margin-right:200px;">
+        <form id="formMessage">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="Ask me something" id="inputQuestion" type="text" autocomplete="off">
+                <span class="input-group-btn">
+                    <!--<a class="btn btn-primary" href="#">
+                        <i class="fa fa-microphone" title="Input by speech"></i>
+                    </a>-->
+                    <input type="submit" class="btn btn-default" id="btnMessageSubmit" value="Ask" />
+                </span>
+              </div>
+            </div>
+        </form>
+
+        <div id="questionArea">
+            ...
+        </div>
+        <div class="bubble" id="answerArea">
+            <div id="answerAreaInner" style="display:block">
+                Hey, how can I help you? Type 'help' if you want to know more about what I can do
+            </div>
+        </div>
+        <div id="voteArea">
+            <i id="playButton" class="fa fa-volume-off fa-fw play" aria-hidden="true"></i>
+            &nbsp;&nbsp;&nbsp;
+            Correct:
+                <i class="fa fa-thumbs-o-up fa-fw vote" aria-hidden="true" bwb-action="correct"></i>
+                <i class="fa fa-thumbs-o-down vote fa-fw fa-flip-horizontal" aria-hidden="true" bwb-action="incorrect"></i>
+            &nbsp;&nbsp;&nbsp;
+            Helpful:
+                <i class="fa fa-thumbs-o-up fa-fw vote" aria-hidden="true" bwb-action="helpful"></i>
+                <i class="fa fa-thumbs-o-down fa-fw fa-flip-horizontal vote" aria-hidden="true" bwb-action="nothelpful"></i>
+            &nbsp;&nbsp;&nbsp;
+            <span id="confidenceArea">Confidence: <span id="confidenceField">0.00</span>%</span>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <img src="" class="imagepreview" style="width: 100%;" >
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block bottom_script %}
+    <script src="{% static 'bwb_webapp/script/dist/bwb.js' %}"></script>
+    <script src="{% static 'bwb_webapp/script/audio_recorder/WebAudioRecorder.js' %}"></script>
+
+    <script>
+        $(document).ready(function() {
+            //Initialize apps
+            var app = bwb.BWBExpert.getInstance();
+            app.init("{{ api_root }}", "{{ csrf_token }}");
+        });
+    </script>
+{% endblock %}

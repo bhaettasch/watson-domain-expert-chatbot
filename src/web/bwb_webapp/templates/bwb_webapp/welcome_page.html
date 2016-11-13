@@ -1,0 +1,39 @@
+{% extends "bwb_webapp/base.html" %}{% load staticfiles %}
+
+{% block title %}Watson Besserwisserbot{% endblock %}
+
+{% block content %}
+
+<style>
+.row img {
+    width:  auto;
+    height: 70px;
+    padding-right: 1rem;
+}
+.row {
+    margin-top: 5rem
+}
+.footer {
+    margin-top: 5rem!important;
+}
+</style>
+
+<h1>Welcome!</h1>
+
+<p>This project was created as part of a student assignment at <a href="https://www.tu-darmstadt.de/">TU Darmstadt</a>. The <a href="https://www.lt.informatik.tu-darmstadt.de/de/teaching/lectures-and-classes/summer-term-2016/question-answering-technologies-behind-ibm-watson/">class</a>, offered by <a href="https://www.lt.informatik.tu-darmstadt.de/">LT group</a>, was taught in Summer of 2016.</p>
+
+<p>Once you are logged in you can create or join different chat rooms. In a chatroom you can talk to other users, just as usual, but opposed to other chatrooms, there is someone else there to talk to: <a href="https://www.ibm.com/">IBM's</a> Watson might just chime in, or answer when talked to, and astound you with his knowledge about the <a href="https://mcu.wikia.com">Marvel Cinematic Universe.</a> </p>
+
+<p>Please <a href="{% url 'app:login' %}?next={% url 'app:index' %}">log in</a> to use the chat, or <a href="{% url 'app:register' %}">register</a> to create an account.</p>
+
+
+
+<div class="row">
+    <img src="{% static 'bwb_webapp/img/logos/tu_darmstadt.png' %}" class="notSelectable" id="tuDarmstadt">
+    <img src="{% static 'bwb_webapp/img/logos/informatik.png' %}" class="notSelectable" id="informatik">
+    <img src="{% static 'bwb_webapp/img/logos/lt.png' %}" class="notSelectable" id="lt">
+    <img src="{% static 'bwb_webapp/img/logos/ibm.png' %}" class="notSelectable" id="ibm">
+    <img src="{% static 'bwb_webapp/img/logos/watson.png' %}" class="notSelectable" id="watson">
+</div>
+
+{% endblock %}

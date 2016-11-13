@@ -1,0 +1,5 @@
+.idea/
+Thumbs.db
+ts_src/reference.ts
+node_modules/
+.tscache/

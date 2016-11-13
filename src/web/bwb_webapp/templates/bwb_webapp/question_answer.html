@@ -1,0 +1,51 @@
+{% extends "bwb_webapp/base.html" %}
+
+{% block title %}Chats{% endblock %}
+
+{% block content %}
+
+    <h1>Question-Answer-Pairs</h1>
+
+    {% for watsonMessage in watsonMessages %}
+        <div style="margin-top: 40px;border-left:1px solid #2780e3;border-bottom:1px solid #2780e3;padding-left:15px;padding-bottom:15px;">
+            <p>
+                {{ watsonMessage.requesting_message.text | striptags }}
+            </p>
+            <p class="message-watson">
+                {{ watsonMessage.system_text_pre | safe }}<br>
+                {{ watsonMessage.text | safe }}<br>
+                {{ watsonMessage.system_text_post | safe }}
+            </p>
+            <div class="text-left" style="color:#999999;">
+                Correct:
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ watsonMessage.vote_correct }}
+                    <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> {{ watsonMessage.vote_incorrect }} |
+                Helpful:
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ watsonMessage.vote_helpful }}
+                    <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> {{ watsonMessage.vote_not_helpful }}
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="text-center" style="margin-top:50px;">
+        {% if is_paginated %}
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li>
+                        <span><a href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a></span>
+                    </li>
+                {% endif %}
+                    <li class="">
+                        <span>{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+                    </li>
+                {% if page_obj.has_next %}
+                    <li>
+                        <span><a href="?page={{ page_obj.next_page_number }}">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

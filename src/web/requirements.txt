@@ -1,0 +1,7 @@
+Django==1.10
+django-bootstrap3==7.0.0
+watson-developer-cloud==0.18.0
+requests==2.10.0
+google-api-python-client==1.5.3
+oauth2client==3.0.0
+pytz==2016.6.1
