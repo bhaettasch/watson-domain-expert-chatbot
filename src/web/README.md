@@ -36,6 +36,7 @@ Please keep the following things in mind:
 * `systemctl stop uwsgi`
 * `git pull`
 * `bower install` when the `bower.json` file changed
+* `cd bwb_webapp/static/bwb_webapp/script; bower install ` when the `package.json` file in the script folder changed
 * `source venv/bin/activate` when one of the `pip` or `./manage.py` steps are necessary
 * `pip install -r requirements.txt` when the `requirements.txt` file changed
 * `./manage.py migrate` when a new migrations file is available
