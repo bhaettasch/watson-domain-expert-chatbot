@@ -28,7 +28,7 @@ Please keep the following things in mind:
 * Maybe create MySQL database and proper user
 * Create the file `web/settings_local.py` and fill it with production settings (it will be imported by `settings.py` and overrides default settings)
 * Create a virtualenv (e.g. `virtualenv -p python3 venv`)
-* For serving WSGI applications, one can install `uwsgi`, create an ini file under `/etc/uwsgi/` with the proper configuration and configure the webserver to use mod-proxy-uwsgi to make the application accessible. The webserver should also serve the static files.
+* For serving WSGI applications, one can install `uwsgi`, create an ini file under `/etc/uwsgi/` with the proper configuration (see `uwsgi.sample.ini`) and configure the webserver to use mod-proxy-uwsgi to make the application accessible. The webserver should also serve the static files.
 * Run all the relevant commands from the Updates section
 
 ### Updates
@@ -36,7 +36,7 @@ Please keep the following things in mind:
 * `systemctl stop uwsgi`
 * `git pull`
 * `bower install` when the `bower.json` file changed
-* `cd bwb_webapp/static/bwb_webapp/script; bower install ` when the `package.json` file in the script folder changed
+* Install `grunt-cli` and `grunt-ts` in `bwb_webapp/static/bwb_webapp/script` if you want to edit the typescript sources
 * `source venv/bin/activate` when one of the `pip` or `./manage.py` steps are necessary
 * `pip install -r requirements.txt` when the `requirements.txt` file changed
 * `./manage.py migrate` when a new migrations file is available
