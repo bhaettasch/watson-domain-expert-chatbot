@@ -13,9 +13,7 @@ Please keep the following things in mind:
 * cd web
 * virtualenv -p python3 venv
 * source venv/bin/activate
-* pip install -r requirements.txt
-* bower install
-* ./manage.py migrate
+* script/update
 * ./manage.py createsuperuser
 * ./manage.py runserver
 
@@ -35,12 +33,7 @@ Please keep the following things in mind:
 ### Updates
 
 * `git pull`
-* `bower install` when the `bower.json` file changed
 * Install `grunt-cli` and `grunt-ts` in `bwb_webapp/static/bwb_webapp/script` if you want to edit the typescript sources
-* `source venv/bin/activate` when one of the `pip` or `./manage.py` steps are necessary
-* `pip install -r requirements.txt` when the `requirements.txt` file changed
-* `./manage.py migrate` when a new migrations file is available
-* `./manage.py collectstatic` when a static file changed (or `bower install` was run)
-* `deactivate` when virtualenv was activated
-* `chown -R django:django .`
-* `touch web/wsgi.py`
+* `source venv/bin/activate`
+* `script/update --prod`
+* `deactivate`

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+bower install --allow-root
+pip install -r requirements.txt
+
+if [ "$1" = "--prod" ]; then
+    ./manage.py collectstatic --noinput
+fi
+
+./manage.py migrate
+
+touch web/wsgi.py
