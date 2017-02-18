@@ -14,6 +14,7 @@ Please keep the following things in mind:
 * virtualenv -p python3 venv
 * source venv/bin/activate
 * pip install -r requirements.txt
+* bower install
 * ./manage.py migrate
 * ./manage.py createsuperuser
 * ./manage.py runserver
@@ -33,7 +34,6 @@ Please keep the following things in mind:
 
 ### Updates
 
-* `systemctl stop uwsgi`
 * `git pull`
 * `bower install` when the `bower.json` file changed
 * Install `grunt-cli` and `grunt-ts` in `bwb_webapp/static/bwb_webapp/script` if you want to edit the typescript sources
@@ -43,4 +43,4 @@ Please keep the following things in mind:
 * `./manage.py collectstatic` when a static file changed (or `bower install` was run)
 * `deactivate` when virtualenv was activated
 * `chown -R django:django .`
-* `systemctl start uwsgi`
+* `touch web/wsgi.py`
