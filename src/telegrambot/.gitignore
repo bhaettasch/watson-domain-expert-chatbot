@@ -9,8 +9,8 @@ __pycache__/
 # virtualenv
 venv/
 
-# local settings file for overwriting default development settings
-settings_local.py
+# local config file
+config.ini
 
 # JetBrains IDE
 .idea/
@@ -18,4 +18,3 @@ settings_local.py
 # pyDev IDE
 .project
 .pydevproject
-
