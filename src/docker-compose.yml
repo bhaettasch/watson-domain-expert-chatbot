@@ -4,3 +4,7 @@ services:
     build: web/
     ports:
       - "80:80"
+  telegrambot:
+    build: telegrambot/
+    depends_on:
+      - web

@@ -2,8 +2,10 @@
 
 ## Deployment
 
-### With Docker
+At fist, copy the file `config.sample.ini` to `config.ini` and fill it with your configuration.
 
-* In the Dockerfile replace API token and backend url with proper parameters.
-* `docker build -t telegrambot .`
-* `docker run --name telegrambot -d telegrambot`
+### Using Docker
+
+You can build an image of the telegram bot using the `Dockerfile`.
+
+To bring up the whole project, you can use `docker-compose` from within the top level `src` folder.
