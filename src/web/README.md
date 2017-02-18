@@ -24,6 +24,8 @@ Please keep the following things in mind:
 
 You can build an image of the web application using the `Dockerfile`.
 
+To bring up the whole project, you can use `docker-compose` from within the top level `src` folder.
+
 ### Manually
 
 #### Installation
