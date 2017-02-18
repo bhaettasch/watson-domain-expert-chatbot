@@ -20,7 +20,13 @@ Please keep the following things in mind:
 
 ## Deployment
 
-### Installation
+### Using Docker
+
+You can build an image of the web application using the `Dockerfile`.
+
+### Manually
+
+#### Installation
 * Install `python3`, `python3-pip`, `python3-virtualenv` and `bower` (the latter maybe via `npm`)
 * Maybe create a user for Django/WSGI applications (e.g. `django`)
 * Clone this repository into a proper directory (e.g. `/srv/web`)
@@ -30,7 +36,7 @@ Please keep the following things in mind:
 * For serving WSGI applications, one can install `uwsgi`, create an ini file under `/etc/uwsgi/` with the proper configuration (see `uwsgi.sample.ini`) and configure the webserver to use mod-proxy-uwsgi to make the application accessible. The webserver should also serve the static files.
 * Run all the relevant commands from the Updates section
 
-### Updates
+#### Updates
 
 * `git pull`
 * Install `grunt-cli` and `grunt-ts` in `bwb_webapp/static/bwb_webapp/script` if you want to edit the typescript sources
