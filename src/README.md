@@ -1,5 +1,7 @@
 # Deploying the Project
 
+Before deploying the project, take a look at the README files of the subprojects and make sure you completed the configuration.
+
 ## Using Docker
 
 The subprojects include individual Dockerfiles. You can use them to build the images manually and start the containers afterwards.
