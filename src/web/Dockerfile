@@ -6,7 +6,5 @@ RUN npm install -g bower
 ADD . /srv
 WORKDIR /srv
 
-RUN script/update
-
 EXPOSE 80
-CMD ./manage.py runserver 0.0.0.0:80
+CMD script/update && ./manage.py runserver 0.0.0.0:80

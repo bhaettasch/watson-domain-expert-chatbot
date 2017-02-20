@@ -2,6 +2,8 @@
 
 Before deploying the project, take a look at the README files of the subprojects and make sure you completed the configuration.
 
+Also copy the file `docker.sample.env` to `docker.env` and modify according to your needs.
+
 ## Using Docker
 
 The subprojects include individual Dockerfiles. You can use them to build the images manually and start the containers afterwards.

@@ -22,7 +22,7 @@ Please keep the following things in mind:
 
 ### Using Docker
 
-Check if you need to create a `web/settings_local.py` file and fill it with your settings.
+Create a `web/settings_local.py` file and fill it with your settings.
 
 You can build an image of the web application using the `Dockerfile`.
 
