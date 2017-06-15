@@ -15,6 +15,10 @@ To automatically build the images and run the containers with appropriate parame
 ```
 # bring up the whole application
 docker-compose up -d
-# once you are done...
+# once you are done and want to remove containers
+docker-compose down
+
+# to stop and start again without removing everything
 docker-compose stop
+docker-compose start
 ```
