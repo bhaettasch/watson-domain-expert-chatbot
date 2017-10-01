@@ -1,0 +1,18 @@
+version: "2"
+services:
+  mariadb:
+    image: mariadb:10
+    env_file:
+      - docker.env
+  web:
+    build: web/
+    ports:
+      - "80:80"
+    env_file:
+      - docker.env
+    depends_on:
+      - mariadb
+  telegrambot:
+    build: telegrambot/
+    depends_on:
+      - web

@@ -126,7 +126,7 @@ USE_TZ = True
 _APP_NAME = 'Watson - The Marvel Cinematic Universe Expert'
 _ORGANISATION_NAME = 'Language Technology group, Computer Science Department, TU Darmstadt.'
 _IMPRINT_URL = ''
-_REPO_URL = 'https://scm.informatik.tu-darmstadt.de/projects/ai94rana-watson'
+_REPO_URL = 'https://github.com/bhaettasch/watson-domain-expert-chatbot'
 
 
 # Static files (CSS, JavaScript, Images)

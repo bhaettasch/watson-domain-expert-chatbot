@@ -11,6 +11,7 @@ import sys
 import re
 import signal
 import traceback
+import configparser
 from threading import Event, Thread
 import codecs
 import urllib.request
@@ -21,11 +22,12 @@ import telepot
 #import imghdr
 from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
 
-BOT_NAME = 'BesserwisserBot'  # For replacing '@BesserwisserBot ' in requests
-API_TOKEN = sys.argv[1]  # get token from command-line
+config = configparser.ConfigParser()
+config.read('config.ini')
 
-BASE_URL = sys.argv[2]  # get backend url from command-line
-#BASE_URL = 'https://localhost/chat/api/external'
+BOT_NAME = config['DEFAULT']['BOT_NAME']  # For replacing '@BesserwisserBot ' in requests
+API_TOKEN = config['DEFAULT']['API_TOKEN']
+BASE_URL = config['DEFAULT']['BASE_URL']
 
 # Persistence file
 LAST_CHAT_IDS_FILE = 'chat_ids.txt'
